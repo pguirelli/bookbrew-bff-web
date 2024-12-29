@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookbrew.bff.web.client.AuthServiceClient;
 import com.bookbrew.bff.web.dto.ForgotPasswordRequestDTO;
 import com.bookbrew.bff.web.dto.LoginRequestDTO;
+import com.bookbrew.bff.web.dto.RecoverEmailRequestDTO;
 import com.bookbrew.bff.web.dto.ResetPasswordRequestDTO;
 
 @RestController
 @RequestMapping("/bff/auth")
-@CrossOrigin(origins = "${cors.allowed-origins}")
+@CrossOrigin
 public class AuthController {
 
     private final AuthServiceClient authServiceClient;
@@ -36,5 +37,10 @@ public class AuthController {
     @PostMapping("/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequestDTO request) {
         return authServiceClient.resetPassword(request);
+    }
+
+    @PostMapping("/recover-email")
+    public ResponseEntity<?> recoverEmail(@RequestBody RecoverEmailRequestDTO request) {
+        return authServiceClient.recoverEmail(request);
     }
 }
