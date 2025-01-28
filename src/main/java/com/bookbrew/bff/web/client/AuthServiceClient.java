@@ -5,12 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.bookbrew.bff.web.dto.ForgotPasswordRequestDTO;
-import com.bookbrew.bff.web.dto.LoginRequestDTO;
-import com.bookbrew.bff.web.dto.RecoverEmailRequestDTO;
-import com.bookbrew.bff.web.dto.ResetPasswordRequestDTO;
-import com.bookbrew.bff.web.dto.TokenResponseDTO;
-import com.bookbrew.bff.web.dto.UserResponseDTO;
+import com.bookbrew.bff.web.dto.auth.ForgotPasswordRequestDTO;
+import com.bookbrew.bff.web.dto.auth.LoginRequestDTO;
+import com.bookbrew.bff.web.dto.auth.RecoverEmailRequestDTO;
+import com.bookbrew.bff.web.dto.auth.ResetPasswordRequestDTO;
+import com.bookbrew.bff.web.dto.auth.TokenResponseDTO;
+import com.bookbrew.bff.web.dto.auth.UserResponseDTO;
 
 @FeignClient(name = "auth-service", url = "${auth.service.url}")
 public interface AuthServiceClient {
