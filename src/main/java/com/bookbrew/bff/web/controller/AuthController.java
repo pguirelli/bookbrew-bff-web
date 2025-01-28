@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookbrew.bff.web.client.AuthServiceClient;
-import com.bookbrew.bff.web.dto.ForgotPasswordRequestDTO;
-import com.bookbrew.bff.web.dto.LoginRequestDTO;
-import com.bookbrew.bff.web.dto.RecoverEmailRequestDTO;
-import com.bookbrew.bff.web.dto.ResetPasswordRequestDTO;
+import com.bookbrew.bff.web.dto.auth.ForgotPasswordRequestDTO;
+import com.bookbrew.bff.web.dto.auth.LoginRequestDTO;
+import com.bookbrew.bff.web.dto.auth.RecoverEmailRequestDTO;
+import com.bookbrew.bff.web.dto.auth.ResetPasswordRequestDTO;
 
 @RestController
 @RequestMapping("/bff/auth")

@@ -1,4 +1,4 @@
-package com.bookbrew.bff.web.dto;
+package com.bookbrew.bff.web.dto.auth;
 
 public class RecoverEmailRequestDTO {
     private String cpf;
