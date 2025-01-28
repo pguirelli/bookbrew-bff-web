@@ -17,7 +17,7 @@ import com.bookbrew.bff.web.dto.customer.CustomerUpdateDTO;
 
 import jakarta.validation.Valid;
 
-@FeignClient(name = "customer-service", url = "${customer.service.url}")
+@FeignClient(name = "customer-service", url = "${customer.service.url}/api/customers")
 public interface CustomerServiceClient {
 
     @GetMapping

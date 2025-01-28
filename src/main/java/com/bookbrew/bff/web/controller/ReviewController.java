@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookbrew.bff.web.client.ProductServiceClient;
+import com.bookbrew.bff.web.client.OrderServiceClient;
 import com.bookbrew.bff.web.dto.product.ProductReviewDTO;
 import com.bookbrew.bff.web.dto.product.ProductReviewRequestDTO;
 
@@ -24,9 +24,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/bff/reviews")
 @CrossOrigin
 public class ReviewController {
-    private final ProductServiceClient reviewServiceClient;
+    private final OrderServiceClient reviewServiceClient;
 
-    public ReviewController(ProductServiceClient reviewServiceClient) {
+    public ReviewController(OrderServiceClient reviewServiceClient) {
         this.reviewServiceClient = reviewServiceClient;
     }
 
