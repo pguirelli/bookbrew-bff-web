@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bookbrew.bff.web.dto.auth.ForgotPasswordRequestDTO;
 import com.bookbrew.bff.web.dto.auth.LoginRequestDTO;
+import com.bookbrew.bff.web.dto.auth.PasswordChangeRequestDTO;
 import com.bookbrew.bff.web.dto.auth.RecoverEmailRequestDTO;
 import com.bookbrew.bff.web.dto.auth.ResetPasswordRequestDTO;
 import com.bookbrew.bff.web.dto.auth.TokenResponseDTO;
@@ -57,6 +58,9 @@ public interface AuthServiceClient {
 
     @PostMapping("/auth/login")
     ResponseEntity<UserResponseDTO> login(@RequestBody LoginRequestDTO request);
+
+    @PutMapping("/auth/users/{userId}/password")
+    UserDTO changePassword(@PathVariable Long userId, @Valid @RequestBody PasswordChangeRequestDTO request);
 
     @PostMapping("/auth/forgot-password")
     ResponseEntity<TokenResponseDTO> forgotPassword(@RequestBody ForgotPasswordRequestDTO request);

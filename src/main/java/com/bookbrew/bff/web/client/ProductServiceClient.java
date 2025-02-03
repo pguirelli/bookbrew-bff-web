@@ -65,6 +65,15 @@ public interface ProductServiceClient {
     @DeleteMapping("/{id}")
     void deleteProduct(@PathVariable Long id);
 
+    @GetMapping("/images")
+    List<ProductImageDTO> getAllProductImages();
+
+    @GetMapping("/images/{id}")
+    ProductImageDTO getProductImageById(@PathVariable Long id);
+
+    @PostMapping("/images")
+    ProductImageDTO createProductImage(@Valid @RequestBody ProductImageDTO productImageDTO);
+
     @PutMapping("/{productId}/images/{imageId}")
     ProductDTO updateProductImage(@PathVariable Long productId, @PathVariable Long imageId,
             @Valid @RequestBody ProductImageDTO productImageDTO);

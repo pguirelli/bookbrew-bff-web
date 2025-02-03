@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.bookbrew.bff.web.dto.customer.AddressDTO;
 import com.bookbrew.bff.web.dto.customer.AddressUpdateDTO;
 import com.bookbrew.bff.web.dto.customer.CustomerDTO;
 import com.bookbrew.bff.web.dto.customer.CustomerUpdateDTO;
@@ -34,6 +35,15 @@ public interface CustomerServiceClient {
 
     @DeleteMapping("/{id}")
     void deleteCustomer(@PathVariable Long id);
+
+    @GetMapping("/{customerId}/addresses/{addressId}")
+    AddressDTO getCustomerAddressById(@PathVariable Long customerId, @PathVariable Long addressId);
+
+    @GetMapping("/{customerId}/addresses")
+    List<AddressDTO> getCustomerAddresses(@PathVariable Long customerId);
+
+    @PostMapping("/{customerId}/addresses")
+    CustomerDTO addCustomerAddress(@PathVariable Long customerId, @Valid @RequestBody AddressDTO address);
 
     @PutMapping("/{customerId}/addresses/{addressId}")
     CustomerDTO updateCustomerAddress(@PathVariable Long customerId, @PathVariable Long addressId,

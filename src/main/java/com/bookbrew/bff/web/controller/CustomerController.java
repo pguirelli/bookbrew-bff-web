@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookbrew.bff.web.client.CustomerServiceClient;
+import com.bookbrew.bff.web.dto.customer.AddressDTO;
 import com.bookbrew.bff.web.dto.customer.AddressUpdateDTO;
 import com.bookbrew.bff.web.dto.customer.CustomerDTO;
 import com.bookbrew.bff.web.dto.customer.CustomerUpdateDTO;
@@ -58,6 +59,26 @@ public class CustomerController {
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{customerId}/addresses/{addressId}")
+    public ResponseEntity<AddressDTO> getCustomerAddressById(
+            @PathVariable Long customerId,
+            @PathVariable Long addressId) {
+        return ResponseEntity.ok(customerService.getCustomerAddressById(customerId, addressId));
+    }
+
+    @GetMapping("/{customerId}/addresses")
+    public ResponseEntity<List<AddressDTO>> getCustomerAddresses(@PathVariable Long customerId) {
+        return ResponseEntity.ok(customerService.getCustomerAddresses(customerId));
+    }
+
+    @PostMapping("/{customerId}/addresses")
+    public ResponseEntity<CustomerDTO> addCustomerAddress(
+            @PathVariable Long customerId,
+            @Valid @RequestBody AddressDTO address) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(customerService.addCustomerAddress(customerId, address));
     }
 
     @PutMapping("/{customerId}/addresses/{addressId}")
