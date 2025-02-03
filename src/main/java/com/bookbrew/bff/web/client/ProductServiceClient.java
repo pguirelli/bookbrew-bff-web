@@ -14,12 +14,10 @@ import com.bookbrew.bff.web.dto.product.BrandDTO;
 import com.bookbrew.bff.web.dto.product.CategoryDTO;
 import com.bookbrew.bff.web.dto.product.ProductDTO;
 import com.bookbrew.bff.web.dto.product.ProductImageDTO;
-import com.bookbrew.bff.web.dto.product.ProductReviewDTO;
-import com.bookbrew.bff.web.dto.product.ProductReviewRequestDTO;
 
 import jakarta.validation.Valid;
 
-@FeignClient(name = "product-service", url = "${product.service.url}")
+@FeignClient(name = "product-service", url = "${product.service.url}/api/products")
 public interface ProductServiceClient {
 
     @GetMapping("/brands")
@@ -52,43 +50,35 @@ public interface ProductServiceClient {
     @DeleteMapping("/categories/{id}")
     void deleteCategory(@PathVariable Long id);
 
-    @GetMapping("/products")
+    @GetMapping
     List<ProductDTO> getAllProducts();
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     ProductDTO getProductById(@PathVariable Long id);
 
-    @PostMapping("/products")
+    @PostMapping
     ProductDTO createProduct(@RequestBody ProductDTO product);
 
-    @PutMapping("/products/{id}")
+    @PutMapping("/{id}")
     ProductDTO updateProduct(@PathVariable Long id, @Valid @RequestBody ProductDTO productDTO);
 
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/{id}")
     void deleteProduct(@PathVariable Long id);
 
-    @PutMapping("/products/{productId}/images/{imageId}")
+    @GetMapping("/images")
+    List<ProductImageDTO> getAllProductImages();
+
+    @GetMapping("/images/{id}")
+    ProductImageDTO getProductImageById(@PathVariable Long id);
+
+    @PostMapping("/images")
+    ProductImageDTO createProductImage(@Valid @RequestBody ProductImageDTO productImageDTO);
+
+    @PutMapping("/{productId}/images/{imageId}")
     ProductDTO updateProductImage(@PathVariable Long productId, @PathVariable Long imageId,
             @Valid @RequestBody ProductImageDTO productImageDTO);
 
-    @DeleteMapping("/products/{productId}/images/{imageId}")
+    @DeleteMapping("/{productId}/images/{imageId}")
     void deleteProductImage(@PathVariable Long productId, @PathVariable Long imageId);
 
-    @GetMapping("/reviews")
-    List<ProductReviewDTO> getAllReviews();
-
-    @GetMapping("/reviews/{id}")
-    ProductReviewDTO getReviewById(@PathVariable Long id);
-
-    @GetMapping("/reviews/product/{productId}")
-    List<ProductReviewDTO> getReviewsByProduct(@PathVariable Long productId);
-
-    @PostMapping("/reviews")
-    ProductReviewDTO createReview(@Valid @RequestBody ProductReviewRequestDTO reviewRequest);
-
-    @PutMapping("/reviews/{id}")
-    ProductReviewDTO updateReview(@PathVariable Long id, @Valid @RequestBody ProductReviewRequestDTO reviewRequest);
-
-    @DeleteMapping("/reviews/{id}")
-    void deleteReview(@PathVariable Long id);
 }

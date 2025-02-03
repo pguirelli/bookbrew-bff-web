@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.bookbrew.bff.web.dto.order.OrderDTO;
 import com.bookbrew.bff.web.dto.order.OrderRequestDTO;
 import com.bookbrew.bff.web.dto.order.PromotionDTO;
+import com.bookbrew.bff.web.dto.product.ProductReviewDTO;
+import com.bookbrew.bff.web.dto.product.ProductReviewRequestDTO;
 
 import jakarta.validation.Valid;
 
-@FeignClient(name = "order-service", url = "${order.service.url}")
+@FeignClient(name = "order-service", url = "${order.service.url}/api")
 public interface OrderServiceClient {
 
     @PostMapping("/promotions")
@@ -53,4 +55,21 @@ public interface OrderServiceClient {
     @DeleteMapping("/orders/{orderId}")
     void deleteOrder(@PathVariable Long orderId);
 
+    @GetMapping("/reviews")
+    List<ProductReviewDTO> getAllReviews();
+
+    @GetMapping("/reviews/{id}")
+    ProductReviewDTO getReviewById(@PathVariable Long id);
+
+    @GetMapping("/reviews/product/{productId}")
+    List<ProductReviewDTO> getReviewsByProduct(@PathVariable Long productId);
+
+    @PostMapping("/reviews")
+    ProductReviewDTO createReview(@Valid @RequestBody ProductReviewRequestDTO reviewRequest);
+
+    @PutMapping("/reviews/{id}")
+    ProductReviewDTO updateReview(@PathVariable Long id, @Valid @RequestBody ProductReviewRequestDTO reviewRequest);
+
+    @DeleteMapping("/reviews/{id}")
+    void deleteReview(@PathVariable Long id);
 }

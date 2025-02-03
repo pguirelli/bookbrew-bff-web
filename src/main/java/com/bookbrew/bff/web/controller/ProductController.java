@@ -57,6 +57,22 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/images")
+    public ResponseEntity<List<ProductImageDTO>> getAllProductImages() {
+        return ResponseEntity.ok(productServiceClient.getAllProductImages());
+    }
+
+    @GetMapping("/images/{id}")
+    public ResponseEntity<ProductImageDTO> getProductImageById(@PathVariable Long id) {
+        return ResponseEntity.ok(productServiceClient.getProductImageById(id));
+    }
+
+    @PostMapping("/images")
+    public ResponseEntity<ProductImageDTO> createProductImage(@Valid @RequestBody ProductImageDTO productImageDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(productServiceClient.createProductImage(productImageDTO));
+    }
+
     @PutMapping("/{productId}/images/{imageId}")
     public ResponseEntity<ProductDTO> updateProductImage(@PathVariable Long productId, @PathVariable Long imageId,
             @Valid @RequestBody ProductImageDTO productImageDTO) {
