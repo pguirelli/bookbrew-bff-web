@@ -2,17 +2,19 @@ package com.bookbrew.bff.web.dto.order;
 
 import java.util.List;
 
-import com.bookbrew.bff.web.dto.customer.AddressDTO;
-
 public class OrderRequestDTO {
 
     private Long customerId;
 
-    private List<OrderItemDTO> items;
+    private List<OrderItemDTO> orderItems;
 
-    private String paymentMethod;
+    private String status;
 
-    private AddressDTO shippingAddress;
+    private PaymentDTO payment;
+
+    private Long deliveryAddress;
+
+    private List<Long> promotionIds;
 
     public Long getCustomerId() {
         return customerId;
@@ -22,27 +24,44 @@ public class OrderRequestDTO {
         this.customerId = customerId;
     }
 
-    public List<OrderItemDTO> getItems() {
-        return items;
+    public List<OrderItemDTO> getOrderItems() {
+        return orderItems;
     }
 
-    public void setItems(List<OrderItemDTO> items) {
-        this.items = items;
+    public void setOrderItems(List<OrderItemDTO> orderItems) {
+        this.orderItems = orderItems;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public AddressDTO getShippingAddress() {
-        return shippingAddress;
+    public PaymentDTO getPayment() {
+        return payment;
     }
 
-    public void setShippingAddress(AddressDTO shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setPayment(PaymentDTO payment) {
+        this.payment = payment;
     }
+
+    public Long getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(Long deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    public List<Long> getPromotionIds() {
+        return promotionIds;
+    }
+
+    public void setPromotionIds(List<Long> promotionIds) {
+        this.promotionIds = promotionIds;
+    }
+
 }

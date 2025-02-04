@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookbrew.bff.web.client.OrderServiceClient;
-import com.bookbrew.bff.web.dto.product.ProductReviewDTO;
-import com.bookbrew.bff.web.dto.product.ProductReviewRequestDTO;
+import com.bookbrew.bff.web.dto.order.ProductReviewDTO;
+import com.bookbrew.bff.web.dto.order.ProductReviewRequestDTO;
 
 import jakarta.validation.Valid;
 

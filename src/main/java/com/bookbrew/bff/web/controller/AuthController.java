@@ -1,5 +1,7 @@
 package com.bookbrew.bff.web.controller;
 
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +17,7 @@ import com.bookbrew.bff.web.dto.auth.LoginRequestDTO;
 import com.bookbrew.bff.web.dto.auth.PasswordChangeRequestDTO;
 import com.bookbrew.bff.web.dto.auth.RecoverEmailRequestDTO;
 import com.bookbrew.bff.web.dto.auth.ResetPasswordRequestDTO;
-import com.bookbrew.bff.web.dto.auth.UserDTO;
+import com.bookbrew.bff.web.dto.auth.UserRequestDTO;
 
 import jakarta.validation.Valid;
 
@@ -31,29 +33,30 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequestDTO request) {
-        return authServiceClient.login(request);
+    public ResponseEntity<UserRequestDTO> login(@Valid @RequestBody LoginRequestDTO request) {
+        return ResponseEntity.ok(authServiceClient.login(request));
     }
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordRequestDTO request) {
-        return authServiceClient.forgotPassword(request);
+    public ResponseEntity<Map<String, String>> forgotPassword(@Valid @RequestBody ForgotPasswordRequestDTO request) {
+        return ResponseEntity.ok(authServiceClient.forgotPassword(request));
     }
 
     @PutMapping("/users/{userId}/password")
-    public ResponseEntity<UserDTO> changePassword(
+    public ResponseEntity<UserRequestDTO> changePassword(
             @PathVariable Long userId,
             @Valid @RequestBody PasswordChangeRequestDTO request) {
         return ResponseEntity.ok(authServiceClient.changePassword(userId, request));
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequestDTO request) {
-        return authServiceClient.resetPassword(request);
+    public ResponseEntity<Void> resetPassword(@Valid @RequestBody ResetPasswordRequestDTO request) {
+        authServiceClient.resetPassword(request);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/recover-email")
-    public ResponseEntity<?> recoverEmail(@RequestBody RecoverEmailRequestDTO request) {
-        return authServiceClient.recoverEmail(request);
+    public ResponseEntity<Map<String, String>> recoverEmail(@Valid @RequestBody RecoverEmailRequestDTO request) {
+        return ResponseEntity.ok(authServiceClient.recoverEmail(request));
     }
 }

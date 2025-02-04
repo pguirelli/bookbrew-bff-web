@@ -1,7 +1,9 @@
 package com.bookbrew.bff.web.dto.auth;
 
 public class ForgotPasswordRequestDTO {
+
     private String email;
+
     private String cpf;
 
     public String getEmail() {

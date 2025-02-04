@@ -14,6 +14,7 @@ import com.bookbrew.bff.web.dto.product.BrandDTO;
 import com.bookbrew.bff.web.dto.product.CategoryDTO;
 import com.bookbrew.bff.web.dto.product.ProductDTO;
 import com.bookbrew.bff.web.dto.product.ProductImageDTO;
+import com.bookbrew.bff.web.dto.product.ProductRequestDTO;
 
 import jakarta.validation.Valid;
 
@@ -57,10 +58,10 @@ public interface ProductServiceClient {
     ProductDTO getProductById(@PathVariable Long id);
 
     @PostMapping
-    ProductDTO createProduct(@RequestBody ProductDTO product);
+    ProductRequestDTO createProduct(@RequestBody ProductRequestDTO product);
 
     @PutMapping("/{id}")
-    ProductDTO updateProduct(@PathVariable Long id, @Valid @RequestBody ProductDTO productDTO);
+    ProductRequestDTO updateProduct(@PathVariable Long id, @Valid @RequestBody ProductRequestDTO productDTO);
 
     @DeleteMapping("/{id}")
     void deleteProduct(@PathVariable Long id);

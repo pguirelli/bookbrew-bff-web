@@ -1,12 +1,16 @@
-package com.bookbrew.bff.web.dto.product;
+package com.bookbrew.bff.web.dto.order;
 
 public class ProductReviewRequestDTO {
 
     private Long productId;
 
+    private Long userId;
+
     private Integer rating;
 
     private String comment;
+
+    private Boolean status;
 
     public Long getProductId() {
         return productId;
@@ -14,6 +18,14 @@ public class ProductReviewRequestDTO {
 
     public void setProductId(Long productId) {
         this.productId = productId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Integer getRating() {
@@ -30,5 +42,13 @@ public class ProductReviewRequestDTO {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

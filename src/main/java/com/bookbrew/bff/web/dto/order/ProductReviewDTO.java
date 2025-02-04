@@ -1,25 +1,27 @@
 package com.bookbrew.bff.web.dto.order;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class OrderItemDTO {
+import jakarta.validation.constraints.NotNull;
+
+public class ProductReviewDTO {
 
     private Long id;
 
     private Long productId;
 
-    private Integer quantity;
+    private Long userId;
 
-    private BigDecimal price;
+    private Integer rating;
 
-    private BigDecimal discountValue;
-
-    private BigDecimal totalPrice;
+    private String comment;
 
     private LocalDateTime creationDate;
 
     private LocalDateTime updateDate;
+
+    @NotNull(message = "Status is required")
+    private Boolean status;
 
     public Long getId() {
         return id;
@@ -37,28 +39,28 @@ public class OrderItemDTO {
         this.productId = productId;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public Integer getRating() {
+        return rating;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
+    public String getComment() {
+        return comment;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public LocalDateTime getCreationDate() {
@@ -77,12 +79,12 @@ public class OrderItemDTO {
         this.updateDate = updateDate;
     }
 
-    public BigDecimal getDiscountValue() {
-        return discountValue;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setDiscountValue(BigDecimal discountValue) {
-        this.discountValue = discountValue;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
 }

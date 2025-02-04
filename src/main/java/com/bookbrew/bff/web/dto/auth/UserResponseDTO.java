@@ -3,15 +3,25 @@ package com.bookbrew.bff.web.dto.auth;
 import java.time.LocalDateTime;
 
 public class UserResponseDTO {
+
     private Long id;
+
     private String name;
+
     private String lastName;
+
     private String email;
+
     private String cpf;
+
     private String phone;
+
     private boolean status;
+
     private LocalDateTime lastLoginDate;
+
     private LocalDateTime passwordUpdateDate;
+
     private UserProfileDTO profile;
 
     public Long getId() {

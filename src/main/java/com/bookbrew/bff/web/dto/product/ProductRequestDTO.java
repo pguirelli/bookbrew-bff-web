@@ -3,7 +3,7 @@ package com.bookbrew.bff.web.dto.product;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ProductDTO {
+public class ProductRequestDTO {
 
     private Long id;
 
@@ -31,11 +31,11 @@ public class ProductDTO {
 
     private Integer salesQuantity;
 
-    private Long categoryId;
+    private CategoryDTO category;
 
-    private Long brandId;
+    private BrandDTO brand;
 
-    private List<Long> productImagesId;
+    private List<ProductImageDTO> productImages;
 
     private LocalDateTime creationDate;
 
@@ -145,28 +145,32 @@ public class ProductDTO {
         this.salesQuantity = salesQuantity;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public CategoryDTO getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
     }
 
-    public Long getBrandId() {
-        return brandId;
+    public BrandDTO getBrand() {
+        return brand;
     }
 
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
+    public void setBrand(BrandDTO brand) {
+        this.brand = brand;
     }
 
-    public List<Long> getProductImagesId() {
-        return productImagesId;
+    public List<ProductImageDTO> getProductImages() {
+        return productImages;
     }
 
-    public void setProductImagesId(List<Long> productImagesId) {
-        this.productImagesId = productImagesId;
+    public void setProductImages(List<ProductImageDTO> productImages) {
+        this.productImages = productImages;
+    }
+
+    public LocalDateTime getUpdateDate() {
+        return updateDate;
     }
 
     public LocalDateTime getCreationDate() {
@@ -175,10 +179,6 @@ public class ProductDTO {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
     }
 
     public void setUpdateDate(LocalDateTime updateDate) {

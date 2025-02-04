@@ -7,9 +7,9 @@ public class PromotionDTO {
 
     private Long id;
 
-    private String name;
-
     private String description;
+
+    private Long productId;
 
     private BigDecimal discountPercentage;
 
@@ -17,7 +17,11 @@ public class PromotionDTO {
 
     private LocalDateTime endDate;
 
-    private Long productId;
+    private Boolean status;
+
+    private LocalDateTime creationDate;
+
+    private LocalDateTime updateDate;
 
     public Long getId() {
         return id;
@@ -27,20 +31,20 @@ public class PromotionDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public BigDecimal getDiscountPercentage() {
@@ -67,11 +71,27 @@ public class PromotionDTO {
         this.endDate = endDate;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDateTime updateDate) {
+        this.updateDate = updateDate;
     }
 }

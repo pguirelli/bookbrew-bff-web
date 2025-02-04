@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.bookbrew.bff.web.dto.customer.AddressDTO;
 import com.bookbrew.bff.web.dto.customer.AddressUpdateDTO;
 import com.bookbrew.bff.web.dto.customer.CustomerDTO;
-import com.bookbrew.bff.web.dto.customer.CustomerUpdateDTO;
+import com.bookbrew.bff.web.dto.customer.CustomerSearchDTO;
 
 import jakarta.validation.Valid;
 
@@ -22,16 +22,16 @@ import jakarta.validation.Valid;
 public interface CustomerServiceClient {
 
     @GetMapping
-    ResponseEntity<List<CustomerDTO>> getAllCustomers();
+    ResponseEntity<List<CustomerSearchDTO>> getAllCustomers();
 
     @GetMapping("/{id}")
-    CustomerDTO getCustomerById(@PathVariable Long id);
+    CustomerSearchDTO getCustomerById(@PathVariable Long id);
 
     @PostMapping
     CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO);
 
     @PutMapping("/{id}")
-    CustomerDTO updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerUpdateDTO customerUpdateDTO);
+    CustomerSearchDTO updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerDTO customerDTO);
 
     @DeleteMapping("/{id}")
     void deleteCustomer(@PathVariable Long id);
@@ -43,10 +43,10 @@ public interface CustomerServiceClient {
     List<AddressDTO> getCustomerAddresses(@PathVariable Long customerId);
 
     @PostMapping("/{customerId}/addresses")
-    CustomerDTO addCustomerAddress(@PathVariable Long customerId, @Valid @RequestBody AddressDTO address);
+    AddressDTO addCustomerAddress(@PathVariable Long customerId, @Valid @RequestBody AddressUpdateDTO address);
 
     @PutMapping("/{customerId}/addresses/{addressId}")
-    CustomerDTO updateCustomerAddress(@PathVariable Long customerId, @PathVariable Long addressId,
+    AddressDTO updateCustomerAddress(@PathVariable Long customerId, @PathVariable Long addressId,
             @Valid @RequestBody AddressUpdateDTO address);
 
     @DeleteMapping("/{customerId}/addresses/{addressId}")

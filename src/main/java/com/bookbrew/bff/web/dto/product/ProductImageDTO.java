@@ -1,21 +1,12 @@
 package com.bookbrew.bff.web.dto.product;
 
-import jakarta.validation.constraints.NotNull;
-
 public class ProductImageDTO {
 
     private Long id;
 
-    @NotNull
-    private Long productId;
-
-    private String imageUrl;
-
     private String description;
 
-    private Boolean mainImage;
-
-    private Boolean status;
+    private String path;
 
     public Long getId() {
         return id;
@@ -23,22 +14,6 @@ public class ProductImageDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public String getDescription() {
@@ -49,19 +24,12 @@ public class ProductImageDTO {
         this.description = description;
     }
 
-    public Boolean getMainImage() {
-        return mainImage;
+    public String getPath() {
+        return path;
     }
 
-    public void setMainImage(Boolean mainImage) {
-        this.mainImage = mainImage;
+    public void setPath(String path) {
+        this.path = path;
     }
 
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
 }

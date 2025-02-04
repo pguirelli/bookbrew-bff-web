@@ -1,8 +1,11 @@
 package com.bookbrew.bff.web.dto.auth;
 
 public class UserProfileDTO {
+
     private Long id;
+
     private String name;
+
     private boolean status;
 
     public Long getId() {
