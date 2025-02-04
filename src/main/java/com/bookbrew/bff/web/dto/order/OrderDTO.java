@@ -4,25 +4,33 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.bookbrew.bff.web.dto.customer.AddressDTO;
-
 public class OrderDTO {
 
     private Long id;
 
     private Long customerId;
 
-    private List<OrderItemDTO> items;
-
-    private BigDecimal total;
+    private LocalDateTime orderDate;
 
     private String status;
 
-    private LocalDateTime orderDate;
+    private List<OrderItemDTO> orderItems;
 
-    private String paymentMethod;
+    private BigDecimal subTotal;
 
-    private AddressDTO shippingAddress;
+    private Integer itemCount;
+
+    private BigDecimal discountAmount;
+
+    private Double amount;
+
+    private PaymentDTO payment;
+
+    private Long addressId;
+
+    private LocalDateTime creationDate;
+
+    private LocalDateTime updateDate;
 
     public Long getId() {
         return id;
@@ -40,20 +48,20 @@ public class OrderDTO {
         this.customerId = customerId;
     }
 
-    public List<OrderItemDTO> getItems() {
-        return items;
+    public LocalDateTime getOrderDate() {
+        return orderDate;
     }
 
-    public void setItems(List<OrderItemDTO> items) {
-        this.items = items;
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public String getStatus() {
@@ -64,27 +72,68 @@ public class OrderDTO {
         this.status = status;
     }
 
-    public LocalDateTime getOrderDate() {
-        return orderDate;
+    public List<OrderItemDTO> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
+    public void setOrderItems(List<OrderItemDTO> orderItems) {
+        this.orderItems = orderItems;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
+    public Integer getItemCount() {
+        return itemCount;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setItemCount(Integer itemCount) {
+        this.itemCount = itemCount;
     }
 
-    public AddressDTO getShippingAddress() {
-        return shippingAddress;
+    public BigDecimal getDiscountAmount() {
+        return discountAmount;
     }
 
-    public void setShippingAddress(AddressDTO shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setDiscountAmount(BigDecimal totalDiscount) {
+        this.discountAmount = totalDiscount;
     }
+
+    public BigDecimal getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(BigDecimal subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public PaymentDTO getPayment() {
+        return payment;
+    }
+
+    public void setPayment(PaymentDTO payment) {
+        this.payment = payment;
+    }
+
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDateTime updateDate) {
+        this.updateDate = updateDate;
+    }
+
 }

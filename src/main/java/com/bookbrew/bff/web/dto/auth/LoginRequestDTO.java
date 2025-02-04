@@ -1,7 +1,9 @@
 package com.bookbrew.bff.web.dto.auth;
 
 public class LoginRequestDTO {
+
     private String email;
+
     private String password;
 
     public String getEmail() {

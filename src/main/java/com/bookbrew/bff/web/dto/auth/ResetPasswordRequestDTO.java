@@ -1,7 +1,9 @@
 package com.bookbrew.bff.web.dto.auth;
 
 public class ResetPasswordRequestDTO {
+
     private String token;
+
     private String newPassword;
 
     public String getToken() {

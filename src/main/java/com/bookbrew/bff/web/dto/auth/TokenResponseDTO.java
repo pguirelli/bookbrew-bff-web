@@ -1,6 +1,7 @@
 package com.bookbrew.bff.web.dto.auth;
 
 public class TokenResponseDTO {
+
     private String token;
 
     public String getToken() {

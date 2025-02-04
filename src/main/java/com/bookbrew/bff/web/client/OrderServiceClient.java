@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bookbrew.bff.web.dto.order.OrderDTO;
 import com.bookbrew.bff.web.dto.order.OrderRequestDTO;
+import com.bookbrew.bff.web.dto.order.ProductReviewDTO;
+import com.bookbrew.bff.web.dto.order.ProductReviewRequestDTO;
 import com.bookbrew.bff.web.dto.order.PromotionDTO;
-import com.bookbrew.bff.web.dto.product.ProductReviewDTO;
-import com.bookbrew.bff.web.dto.product.ProductReviewRequestDTO;
 
 import jakarta.validation.Valid;
 
@@ -39,7 +39,6 @@ public interface OrderServiceClient {
     @GetMapping("/promotions/product/{productId}")
     List<PromotionDTO> getPromotionsByProduct(@PathVariable Long productId);
 
-    // Order endpoints
     @PostMapping("/orders")
     OrderDTO createOrder(@Valid @RequestBody OrderRequestDTO orderRequest);
 

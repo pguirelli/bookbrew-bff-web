@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookbrew.bff.web.client.ProductServiceClient;
 import com.bookbrew.bff.web.dto.product.ProductDTO;
 import com.bookbrew.bff.web.dto.product.ProductImageDTO;
+import com.bookbrew.bff.web.dto.product.ProductRequestDTO;
 
 import jakarta.validation.Valid;
 
@@ -41,13 +42,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO product) {
+    public ResponseEntity<ProductRequestDTO> createProduct(@Valid @RequestBody ProductRequestDTO product) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(productServiceClient.createProduct(product));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductDTO productDTO) {
+    public ResponseEntity<ProductRequestDTO> updateProduct(@PathVariable Long id,
+            @Valid @RequestBody ProductRequestDTO productDTO) {
         return ResponseEntity.ok(productServiceClient.updateProduct(id, productDTO));
     }
 

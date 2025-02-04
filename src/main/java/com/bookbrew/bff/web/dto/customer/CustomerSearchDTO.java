@@ -5,7 +5,7 @@ import java.util.List;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class CustomerDTO {
+public class CustomerSearchDTO {
 
     private Long id;
 
@@ -34,11 +34,15 @@ public class CustomerDTO {
     @NotBlank(message = "Birth date is required")
     private String birthDate;
 
-    private List<AddressDTO> addresses;
+    private List<Long> addressesId;
 
     private Long profile;
 
+    private LocalDateTime creationDate;
+
     private LocalDateTime updateDate;
+
+    private LocalDateTime lastLoginDate;
 
     private LocalDateTime passwordUpdateDate;
 
@@ -122,12 +126,12 @@ public class CustomerDTO {
         this.birthDate = birthDate;
     }
 
-    public List<AddressDTO> getAddresses() {
-        return addresses;
+    public List<Long> getAddressesId() {
+        return addressesId;
     }
 
-    public void setAddresses(List<AddressDTO> addresses) {
-        this.addresses = addresses;
+    public void setAddressesId(List<Long> addressesId) {
+        this.addressesId = addressesId;
     }
 
     public Long getProfile() {
@@ -138,12 +142,28 @@ public class CustomerDTO {
         this.profile = profile;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
     public LocalDateTime getUpdateDate() {
         return updateDate;
     }
 
     public void setUpdateDate(LocalDateTime updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public LocalDateTime getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(LocalDateTime lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
     }
 
     public LocalDateTime getPasswordUpdateDate() {

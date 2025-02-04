@@ -1,8 +1,10 @@
 package com.bookbrew.bff.web.dto.auth;
 
 public class RecoverEmailRequestDTO {
+
     private String cpf;
-    private String email;
+
+    private String phone;
 
     public String getCpf() {
         return cpf;
@@ -12,11 +14,12 @@ public class RecoverEmailRequestDTO {
         this.cpf = cpf;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
+
 }

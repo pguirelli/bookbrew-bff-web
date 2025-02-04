@@ -18,7 +18,7 @@ import com.bookbrew.bff.web.client.CustomerServiceClient;
 import com.bookbrew.bff.web.dto.customer.AddressDTO;
 import com.bookbrew.bff.web.dto.customer.AddressUpdateDTO;
 import com.bookbrew.bff.web.dto.customer.CustomerDTO;
-import com.bookbrew.bff.web.dto.customer.CustomerUpdateDTO;
+import com.bookbrew.bff.web.dto.customer.CustomerSearchDTO;
 
 import jakarta.validation.Valid;
 
@@ -34,25 +34,25 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<ResponseEntity<List<CustomerDTO>>> getAllCustomers() {
-        return ResponseEntity.ok(customerService.getAllCustomers());
+    public ResponseEntity<List<CustomerSearchDTO>> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<CustomerSearchDTO> getCustomerById(@PathVariable Long id) {
         return ResponseEntity.ok(customerService.getCustomerById(id));
     }
 
     @PostMapping
-    public ResponseEntity<?> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(customerService.createCustomer(customerDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable Long id,
-            @Valid @RequestBody CustomerUpdateDTO customerUpdateDTO) {
-        return ResponseEntity.ok(customerService.updateCustomer(id, customerUpdateDTO));
+    public ResponseEntity<CustomerSearchDTO> updateCustomer(@PathVariable Long id,
+            @Valid @RequestBody CustomerDTO customerDTO) {
+        return ResponseEntity.ok(customerService.updateCustomer(id, customerDTO));
     }
 
     @DeleteMapping("/{id}")
@@ -74,21 +74,25 @@ public class CustomerController {
     }
 
     @PostMapping("/{customerId}/addresses")
-    public ResponseEntity<CustomerDTO> addCustomerAddress(
+    public ResponseEntity<AddressDTO> addCustomerAddress(
             @PathVariable Long customerId,
-            @Valid @RequestBody AddressDTO address) {
+            @Valid @RequestBody AddressUpdateDTO address) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(customerService.addCustomerAddress(customerId, address));
     }
 
     @PutMapping("/{customerId}/addresses/{addressId}")
-    public ResponseEntity<CustomerDTO> updateCustomerAddress(@PathVariable Long customerId,
-            @PathVariable Long addressId, @Valid @RequestBody AddressUpdateDTO address) {
+    public ResponseEntity<AddressDTO> updateCustomerAddress(
+            @PathVariable Long customerId,
+            @PathVariable Long addressId,
+            @Valid @RequestBody AddressUpdateDTO address) {
         return ResponseEntity.ok(customerService.updateCustomerAddress(customerId, addressId, address));
     }
 
     @DeleteMapping("/{customerId}/addresses/{addressId}")
-    public ResponseEntity<Void> deleteCustomerAddress(@PathVariable Long customerId, @PathVariable Long addressId) {
+    public ResponseEntity<Void> deleteCustomerAddress(
+            @PathVariable Long customerId,
+            @PathVariable Long addressId) {
         customerService.deleteCustomerAddress(customerId, addressId);
         return ResponseEntity.noContent().build();
     }

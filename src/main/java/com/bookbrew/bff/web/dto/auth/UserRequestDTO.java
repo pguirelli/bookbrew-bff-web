@@ -1,44 +1,32 @@
-package com.bookbrew.bff.web.dto.customer;
+package com.bookbrew.bff.web.dto.auth;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-import jakarta.validation.constraints.NotBlank;
-
-public class CustomerDTO {
+public class UserRequestDTO {
 
     private Long id;
 
-    private Long userId;
-
-    @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank(message = "CPF is required")
     private String cpf;
 
-    @NotBlank(message = "Phone is required")
     private String phone;
 
-    @NotBlank(message = "Password is required")
     private String password;
 
-    private Boolean status;
+    private boolean status;
 
-    @NotBlank(message = "Birth date is required")
-    private String birthDate;
+    private UserProfileDTO profile;
 
-    private List<AddressDTO> addresses;
-
-    private Long profile;
+    private LocalDateTime creationDate;
 
     private LocalDateTime updateDate;
+
+    private LocalDateTime lastLoginDate;
 
     private LocalDateTime passwordUpdateDate;
 
@@ -48,14 +36,6 @@ public class CustomerDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getName() {
@@ -106,36 +86,28 @@ public class CustomerDTO {
         this.password = password;
     }
 
-    public Boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public List<AddressDTO> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<AddressDTO> addresses) {
-        this.addresses = addresses;
-    }
-
-    public Long getProfile() {
+    public UserProfileDTO getProfile() {
         return profile;
     }
 
-    public void setProfile(Long profile) {
+    public void setProfile(UserProfileDTO profile) {
         this.profile = profile;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public LocalDateTime getUpdateDate() {
@@ -144,6 +116,14 @@ public class CustomerDTO {
 
     public void setUpdateDate(LocalDateTime updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public LocalDateTime getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(LocalDateTime lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
     }
 
     public LocalDateTime getPasswordUpdateDate() {

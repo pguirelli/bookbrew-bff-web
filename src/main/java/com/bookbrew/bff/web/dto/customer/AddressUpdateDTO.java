@@ -2,6 +2,10 @@ package com.bookbrew.bff.web.dto.customer;
 
 public class AddressUpdateDTO {
 
+    private Long id;
+
+    private String zipCode;
+
     private String street;
 
     private String number;
@@ -10,11 +14,29 @@ public class AddressUpdateDTO {
 
     private String neighborhood;
 
+    private String type;
+
     private String city;
 
     private String state;
 
-    private String zipCode;
+    private String country;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
 
     public String getStreet() {
         return street;
@@ -48,6 +70,14 @@ public class AddressUpdateDTO {
         this.neighborhood = neighborhood;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getCity() {
         return city;
     }
@@ -64,12 +94,12 @@ public class AddressUpdateDTO {
         this.state = state;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getCountry() {
+        return country;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }
