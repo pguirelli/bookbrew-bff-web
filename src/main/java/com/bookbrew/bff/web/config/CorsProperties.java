@@ -15,4 +15,5 @@ public class CorsProperties {
     public void setAllowedOrigins(String allowedOrigins) {
         this.allowedOrigins = allowedOrigins;
     }
+    
 }
