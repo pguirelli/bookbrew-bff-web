@@ -3,8 +3,10 @@ package com.bookbrew.bff.web.client;
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bookbrew.bff.web.dto.product.BrandDTO;
 import com.bookbrew.bff.web.dto.product.CategoryDTO;
-import com.bookbrew.bff.web.dto.product.ProductDTO;
 import com.bookbrew.bff.web.dto.product.ProductImageDTO;
+import com.bookbrew.bff.web.dto.product.ProductImagesSearchDTO;
 import com.bookbrew.bff.web.dto.product.ProductRequestDTO;
 
 import jakarta.validation.Valid;
@@ -52,10 +54,10 @@ public interface ProductServiceClient {
     void deleteCategory(@PathVariable Long id);
 
     @GetMapping
-    List<ProductDTO> getAllProducts();
+    List<ProductRequestDTO> getAllProducts();
 
     @GetMapping("/{id}")
-    ProductDTO getProductById(@PathVariable Long id);
+    ProductRequestDTO getProductById(@PathVariable Long id);
 
     @PostMapping
     ProductRequestDTO createProduct(@RequestBody ProductRequestDTO product);
@@ -66,20 +68,7 @@ public interface ProductServiceClient {
     @DeleteMapping("/{id}")
     void deleteProduct(@PathVariable Long id);
 
-    @GetMapping("/images")
-    List<ProductImageDTO> getAllProductImages();
-
-    @GetMapping("/images/{id}")
-    ProductImageDTO getProductImageById(@PathVariable Long id);
-
-    @PostMapping("/images")
-    ProductImageDTO createProductImage(@Valid @RequestBody ProductImageDTO productImageDTO);
-
-    @PutMapping("/{productId}/images/{imageId}")
-    ProductDTO updateProductImage(@PathVariable Long productId, @PathVariable Long imageId,
-            @Valid @RequestBody ProductImageDTO productImageDTO);
-
-    @DeleteMapping("/{productId}/images/{imageId}")
-    void deleteProductImage(@PathVariable Long productId, @PathVariable Long imageId);
+    @PostMapping(value = "/images", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    ProductImagesSearchDTO createProductImage(@ModelAttribute ProductImageDTO productImageDTO);
 
 }

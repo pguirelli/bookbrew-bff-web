@@ -1,14 +1,14 @@
 package com.bookbrew.bff.web.dto.product;
 
-public class ProductImageDTO {
+public class ProductImagesSearchDTO {
 
     private Long id;
 
     private String description;
 
-    private byte[] imageData;
+    private byte[] image;
 
-    private ProductDTO product;
+    private Long idProduct;
 
     public Long getId() {
         return id;
@@ -26,20 +26,20 @@ public class ProductImageDTO {
         this.description = description;
     }
 
-    public byte[] getImageData() {
-        return imageData;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImageData(byte[] imageData) {
-        this.imageData = imageData;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
-    public ProductDTO getProduct() {
-        return product;
+    public Long getIdProduct() {
+        return idProduct;
     }
 
-    public void setProduct(ProductDTO product) {
-        this.product = product;
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
     }
 
 }

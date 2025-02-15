@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.bookbrew.bff.web.config.FeignConfig;
 import com.bookbrew.bff.web.dto.auth.ForgotPasswordRequestDTO;
 import com.bookbrew.bff.web.dto.auth.LoginRequestDTO;
 import com.bookbrew.bff.web.dto.auth.PasswordChangeRequestDTO;
@@ -23,7 +24,7 @@ import com.bookbrew.bff.web.dto.auth.UserRequestDTO;
 
 import jakarta.validation.Valid;
 
-@FeignClient(name = "auth-service", url = "${auth.service.url}/api")
+@FeignClient(name = "auth-service", url = "${auth.service.url}/api", configuration = FeignConfig.class)
 public interface AuthServiceClient {
 
     @GetMapping("/users")

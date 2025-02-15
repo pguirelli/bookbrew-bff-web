@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookbrew.bff.web.client.ProductServiceClient;
-import com.bookbrew.bff.web.dto.product.ProductDTO;
-import com.bookbrew.bff.web.dto.product.ProductImageDTO;
 import com.bookbrew.bff.web.dto.product.ProductRequestDTO;
 
 import jakarta.validation.Valid;
@@ -32,12 +30,12 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+    public ResponseEntity<List<ProductRequestDTO>> getAllProducts() {
         return ResponseEntity.ok(productServiceClient.getAllProducts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
+    public ResponseEntity<ProductRequestDTO> getProductById(@PathVariable Long id) {
         return ResponseEntity.ok(productServiceClient.getProductById(id));
     }
 
@@ -59,31 +57,4 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/images")
-    public ResponseEntity<List<ProductImageDTO>> getAllProductImages() {
-        return ResponseEntity.ok(productServiceClient.getAllProductImages());
-    }
-
-    @GetMapping("/images/{id}")
-    public ResponseEntity<ProductImageDTO> getProductImageById(@PathVariable Long id) {
-        return ResponseEntity.ok(productServiceClient.getProductImageById(id));
-    }
-
-    @PostMapping("/images")
-    public ResponseEntity<ProductImageDTO> createProductImage(@Valid @RequestBody ProductImageDTO productImageDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(productServiceClient.createProductImage(productImageDTO));
-    }
-
-    @PutMapping("/{productId}/images/{imageId}")
-    public ResponseEntity<ProductDTO> updateProductImage(@PathVariable Long productId, @PathVariable Long imageId,
-            @Valid @RequestBody ProductImageDTO productImageDTO) {
-        return ResponseEntity.ok(productServiceClient.updateProductImage(productId, imageId, productImageDTO));
-    }
-
-    @DeleteMapping("/{productId}/images/{imageId}")
-    public ResponseEntity<Void> deleteProductImage(@PathVariable Long productId, @PathVariable Long imageId) {
-        productServiceClient.deleteProductImage(productId, imageId);
-        return ResponseEntity.noContent().build();
-    }
 }
