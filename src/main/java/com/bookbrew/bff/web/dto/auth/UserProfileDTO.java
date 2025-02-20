@@ -6,7 +6,7 @@ public class UserProfileDTO {
 
     private String name;
 
-    private boolean status;
+    private Boolean status;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class UserProfileDTO {
         this.name = name;
     }
 
-    public boolean isStatus() {
+    public Boolean isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

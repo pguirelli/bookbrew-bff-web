@@ -48,6 +48,9 @@ public interface OrderServiceClient {
     @GetMapping("/orders/{id}")
     OrderDTO getOrderById(@PathVariable Long id);
 
+    @GetMapping("/orders/customer/{customerId}")
+    List<OrderDTO> getOrdersByCustomer(@PathVariable Long customerId);
+
     @PutMapping("/orders/{orderId}")
     OrderDTO updateOrder(@PathVariable Long orderId, @RequestBody OrderRequestDTO orderRequest);
 
@@ -62,6 +65,9 @@ public interface OrderServiceClient {
 
     @GetMapping("/reviews/product/{productId}")
     List<ProductReviewDTO> getReviewsByProduct(@PathVariable Long productId);
+
+    @GetMapping("/reviews/user/{userId}")
+    List<ProductReviewDTO> getReviewsByUser(@PathVariable Long userId);
 
     @PostMapping("/reviews")
     ProductReviewDTO createReview(@Valid @RequestBody ProductReviewRequestDTO reviewRequest);
