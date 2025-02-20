@@ -44,7 +44,7 @@ public class UserProfileController {
     }
 
     @PutMapping("/{id}")
-    public UserProfileDTO updateUserProfile(@PathVariable Long id, @Valid @RequestBody UserProfileDTO userProfile) {
+    public UserProfileDTO updateUserProfile(@PathVariable Long id, @RequestBody UserProfileDTO userProfile) {
         return userProfileService.updateUserProfile(id, userProfile);
     }
 

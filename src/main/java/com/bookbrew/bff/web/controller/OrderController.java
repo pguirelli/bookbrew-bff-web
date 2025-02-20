@@ -46,6 +46,11 @@ public class OrderController {
         return ResponseEntity.ok(orderServiceClient.getOrderById(id));
     }
 
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<OrderDTO>> getOrdersByCustomer(@PathVariable Long customerId) {
+        return ResponseEntity.ok(orderServiceClient.getOrdersByCustomer(customerId));
+    }
+
     @PutMapping("/{orderId}")
     public ResponseEntity<OrderDTO> updateOrder(@PathVariable Long orderId, @RequestBody OrderRequestDTO orderRequest) {
         return ResponseEntity.ok(orderServiceClient.updateOrder(orderId, orderRequest));

@@ -27,11 +27,14 @@ public interface CustomerServiceClient {
     @GetMapping("/{id}")
     CustomerSearchDTO getCustomerById(@PathVariable Long id);
 
+    @GetMapping("/user/{userId}")
+    CustomerSearchDTO getCustomerByUserId(@PathVariable Long userId);
+
     @PostMapping
     CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO);
 
     @PutMapping("/{id}")
-    CustomerSearchDTO updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerDTO customerDTO);
+    CustomerSearchDTO updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO);
 
     @DeleteMapping("/{id}")
     void deleteCustomer(@PathVariable Long id);

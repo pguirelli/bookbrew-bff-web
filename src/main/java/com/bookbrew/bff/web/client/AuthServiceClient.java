@@ -52,7 +52,7 @@ public interface AuthServiceClient {
     UserProfileDTO createUserProfile(@Valid @RequestBody UserProfileDTO userProfile);
 
     @PutMapping("/user-profiles/{id}")
-    UserProfileDTO updateUserProfile(@PathVariable Long id, @Valid @RequestBody UserProfileDTO userProfile);
+    UserProfileDTO updateUserProfile(@PathVariable Long id, @RequestBody UserProfileDTO userProfile);
 
     @DeleteMapping("/user-profiles/{id}")
     void deleteUserProfile(@PathVariable Long id);
